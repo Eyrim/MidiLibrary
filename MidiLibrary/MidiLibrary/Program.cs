@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using MidiLibrary.Structures;
+using MidiLibrary.Util;
 
 namespace MidiLibrary
 {
@@ -7,6 +9,7 @@ namespace MidiLibrary
     {
         static void Main(string[] args)
         {
+            BinaryTools.LongToBinary(65, 2);
         }
     }
 }

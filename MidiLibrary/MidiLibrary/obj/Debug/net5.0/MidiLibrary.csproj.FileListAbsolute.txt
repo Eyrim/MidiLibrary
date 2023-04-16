@@ -1,0 +1,16 @@
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\bin\Debug\net5.0\MidiLibrary.exe
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\bin\Debug\net5.0\MidiLibrary.deps.json
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\bin\Debug\net5.0\MidiLibrary.runtimeconfig.json
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\bin\Debug\net5.0\MidiLibrary.runtimeconfig.dev.json
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\bin\Debug\net5.0\MidiLibrary.dll
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\bin\Debug\net5.0\MidiLibrary.pdb
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\MidiLibrary.csproj.AssemblyReference.cache
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\MidiLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\MidiLibrary.AssemblyInfoInputs.cache
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\MidiLibrary.AssemblyInfo.cs
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\MidiLibrary.csproj.CoreCompileInputs.cache
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\MidiLibrary.dll
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\refint\MidiLibrary.dll
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\MidiLibrary.pdb
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\MidiLibrary.genruntimeconfig.cache
+D:\projects\MidiLibrary\MidiLibrary\MidiLibrary\obj\Debug\net5.0\ref\MidiLibrary.dll
