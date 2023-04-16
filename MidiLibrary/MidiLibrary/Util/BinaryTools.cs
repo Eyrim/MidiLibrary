@@ -11,13 +11,13 @@ namespace MidiLibrary.Util
         /// </summary>
         /// <param name="number">The number to convert</param>
         /// <returns>Integer array of 1/0's representing the binary equivalent of <code>number</code></returns>
-        public static int[] LongToBinary(long number)
+        public static bool[] LongToBinary(long number)
         {
             long minimumBytes = CalculateMinimumBytes(number);
             // The number of bits in all of the bytes
             long bitCount = minimumBytes * 8;
             // Create the right amount of bytes as an array
-            int[] binary = new int[bitCount];
+            bool[] binary = new bool[bitCount];
             // Find the largest value 
             long binValue = (long) Math.Pow(2, bitCount) / 2;
             // Fill in from end of the array first (end = MSB)
@@ -27,7 +27,7 @@ namespace MidiLibrary.Util
             {
                 if (number >= binValue)
                 {
-                    binary[^offset] = 1;
+                    binary[^offset] = true;
                     number -= binValue;
                 }
 
