@@ -11,7 +11,7 @@ namespace MidiLibrary.Structures
         /// <summary>
         /// 7 bit representation of the input byte
         /// </summary>
-        public readonly byte Number { get; init; }
+        private readonly byte Number { get; init; }
 
         /// <summary>
         /// Constructs a new seven bit number 
@@ -34,10 +34,7 @@ namespace MidiLibrary.Structures
         /// <returns>SevenBitNumber</returns>
         public static explicit operator SevenBitNumber(byte number) => new SevenBitNumber(number);
 
-        public override string ToString()
-        {
-            throw new NotImplementedException();
-        }
+        public override string ToString() => $"{Number.ToString()}";
 
         /// <summary>
         /// Validates input byte

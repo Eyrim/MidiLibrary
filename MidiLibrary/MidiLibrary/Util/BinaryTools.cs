@@ -48,6 +48,7 @@ namespace MidiLibrary.Util
         /// </summary>
         /// <param name="number">The number to calculate the smallest number of bytes for</param>
         /// <returns>The smallest number of bytes to store a given number</returns>
+        // Credit: https://github.com/ily-cloudy
         private static long CalculateMinimumBytes(long number) => (long) Math.Ceiling(Math.Log2(number) / 8);
     }
 }
