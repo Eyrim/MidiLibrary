@@ -9,7 +9,7 @@ namespace MidiLibrary
     {
         static void Main(string[] args)
         {
-            BinaryTools.LongToBinary(65, 2);
+            BinaryTools.LongToBinary(65537);
         }
     }
 }

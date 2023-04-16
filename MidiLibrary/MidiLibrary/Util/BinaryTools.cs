@@ -13,8 +13,9 @@ namespace MidiLibrary.Util
         /// <returns>Integer array of 1/0's representing the binary equivalent of <code>number</code></returns>
         public static int[] LongToBinary(long number)
         {
+            long minimumBytes = CalculateMinimumBytes(number);
             // The number of bits in all of the bytes
-            int bitCount = byteAlignment * 8;
+            long bitCount = minimumBytes * 8;
             // Create the right amount of bytes as an array
             int[] binary = new int[bitCount];
             // Find the largest value 
@@ -37,5 +38,16 @@ namespace MidiLibrary.Util
 
             return binary;
         }
+
+        /// <summary>
+        /// <para>Calculates the minimum number of bytes required to store a specified number</para>
+        /// <para>
+        /// Equation used:
+        /// <code>Math.Ceiling(Math.Log2(number) / 8)</code>
+        /// </para>
+        /// </summary>
+        /// <param name="number">The number to calculate the smallest number of bytes for</param>
+        /// <returns>The smallest number of bytes to store a given number</returns>
+        private static long CalculateMinimumBytes(long number) => (long) Math.Ceiling(Math.Log2(number) / 8);
     }
 }
