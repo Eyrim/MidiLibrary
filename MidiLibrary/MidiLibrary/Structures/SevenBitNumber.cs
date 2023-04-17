@@ -45,9 +45,6 @@ namespace MidiLibrary.Structures
         /// <para>False - If byte is greater than 127</para>
         /// </returns>
         //TODO: rename
-        private static bool ValidateByte(byte toValidate)
-        {
-            return toValidate < 127;
-        }
+        private static bool ValidateByte(byte toValidate) => toValidate < 127;
     }
 }

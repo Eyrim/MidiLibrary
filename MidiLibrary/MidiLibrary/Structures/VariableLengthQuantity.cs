@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using MidiLibrary.Util;
 
 namespace MidiLibrary.Structures
 {
@@ -20,7 +22,10 @@ namespace MidiLibrary.Structures
         /// <exception cref="NotImplementedException"></exception>
         public VariableLengthQuantity(long number)
         {
-            throw new NotImplementedException();
+            bool[] binaryRep = BinaryTools.LongToBinary(number);
+            bool[][] sevenBitNumbers = BinaryTools.BinaryToSevenBitNumbers(binaryRep);
+
+            throw new Exception();
         }
         
         /// <summary>
