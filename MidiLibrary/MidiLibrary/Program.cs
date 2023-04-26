@@ -9,7 +9,17 @@ namespace MidiLibrary
     {
         static void Main(string[] args)
         {
-            VariableLengthQuantity a = (VariableLengthQuantity) 137;
+            foreach (bool b in BinaryTools.LongToBinary(106903))
+            {
+                if (b)
+                {
+                    Console.Write("1");
+                }
+                else
+                {
+                    Console.Write("0");
+                }
+            }
         }
     }
 }

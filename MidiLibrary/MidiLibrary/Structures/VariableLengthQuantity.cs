@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using MidiLibrary.Util;
 
 namespace MidiLibrary.Structures
@@ -9,23 +7,21 @@ namespace MidiLibrary.Structures
     /// Represents a variable length quantity
     /// </summary>
     public readonly struct VariableLengthQuantity
+    //TODO: Override ToString
     {
         /// <summary>
         /// Binary representation of the input number up to 64 bit signed limits
         /// </summary>
-        public readonly byte[] Number { get; init; }
+        private readonly bool[][] Number { get; init; }
 
         /// <summary>
         /// Constructs a new variable length quantity variable
         /// </summary>
         /// <param name="number">The signed 64 bit integer to represent</param>
         /// <exception cref="NotImplementedException"></exception>
-        public VariableLengthQuantity(long number)
+        private VariableLengthQuantity(long number)
         {
-            bool[] binaryRep = BinaryTools.LongToBinary(number);
-            bool[][] sevenBitNumbers = BinaryTools.BinaryToSevenBitNumbers(binaryRep);
-
-            throw new Exception();
+            this.Number = FromLong(number);
         }
         
         /// <summary>
@@ -35,17 +31,7 @@ namespace MidiLibrary.Structures
         /// <returns>VariableLengthQuantity</returns>
         public static explicit operator VariableLengthQuantity(long number) => new VariableLengthQuantity(number);
 
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            
-            foreach (byte b in this.Number)
-            {
-                sb.Append(b);
-            }
-
-            return sb.ToString();
-        }
+        public static explicit operator long(VariableLengthQuantity vlq) => ToLong(vlq);
 
         /// <summary>
         /// Converts the input long to a variable length quantity
@@ -53,9 +39,23 @@ namespace MidiLibrary.Structures
         /// <param name="number">The long to convert</param>
         /// <returns>Variable Length Quantity</returns>
         /// <exception cref="NotImplementedException"></exception>
-        private static byte[] FromLong(long number)
+        private static bool[][] FromLong(long number)
         {
-            throw new NotImplementedException();
+            bool[] binaryRep = BinaryTools.LongToBinary(number);
+            bool[][] sevenBitNumbers = BinaryTools.BinaryToSevenBitNumbers(binaryRep);
+            // Reverse the array
+            Array.Reverse(sevenBitNumbers, 0, sevenBitNumbers.Length);
+            
+            for (int i = 0; i < sevenBitNumbers.Length; i++)
+            {
+                sevenBitNumbers[i] = BinaryTools.PadBinary(sevenBitNumbers[i], 8);
+                // everything that isn't next, has a 1 (true) as MSB
+                sevenBitNumbers[i][^1] = true;
+            }
+
+            sevenBitNumbers[^1][^1] = false;
+
+            return sevenBitNumbers;
         }
 
         /// <summary>
@@ -64,9 +64,32 @@ namespace MidiLibrary.Structures
         /// <param name="array">The variable length quantity to convert</param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        private static long ToLong(byte[] array)
+        private static long ToLong(VariableLengthQuantity vlq)
         {
-            throw new NotImplementedException();
+            // NOTE: This method is very similar to BinaryTools.BinaryToLong()
+            // TODO: Consider merging them
+            long total = 0;
+            long currentBitValue = 1;
+
+            // Reverse the array
+            Array.Reverse(vlq.Number, 0, vlq.Number.Length);
+            
+            for (int i = 0; i < vlq.Number.Length; i++)
+            {
+                // Don't evaluate the last bit as it holds no value
+                    // Used only as a "null" terminator
+                for (int j = 0; j < vlq.Number[i].Length - 1; j++)
+                {
+                    if (vlq.Number[i][j])
+                    {
+                        total += currentBitValue;
+                    }
+
+                    currentBitValue *= 2;
+                }
+            }
+
+            return total;
         }
     }
 }

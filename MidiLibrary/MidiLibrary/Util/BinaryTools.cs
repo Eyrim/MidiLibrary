@@ -38,6 +38,8 @@ namespace MidiLibrary.Util
                 offset++;
                 binValue /= 2;
             }
+            
+            Array.Reverse(binary);
 
             return binary;
         }
@@ -76,10 +78,13 @@ namespace MidiLibrary.Util
             bool[][] allNumbers = new bool[requiredBytes][];
             int counter = 0;
 
+            // For every 7 bits in the input array
             for (int i = 0; i < requiredBytes * 7; i += 7)
             {
+                //TODO: Refactor these if statements
                 if ((i + 7) > binary.Length - 1)
                 {
+                    // 7 bits couldn't be found, so pad it to be 7 bits
                     allNumbers[counter] = PadBinary(binary[i..binary.Length], 7);
                 }
                 else
@@ -90,8 +95,6 @@ namespace MidiLibrary.Util
                 counter++;
             }
 
-            Array.Reverse(allNumbers, 0, allNumbers.Length);
-
             return allNumbers;
         }
 
@@ -101,7 +104,7 @@ namespace MidiLibrary.Util
         /// <param name="binary">The binary to convert</param>
         /// <param name="len">The length of the new array</param>
         /// <returns>New array with right padding</returns>
-        private static bool[] PadBinary(bool[] binary, int len)
+        public static bool[] PadBinary(bool[] binary, int len)
         {
             bool[] newBinary = new bool[len];
 
