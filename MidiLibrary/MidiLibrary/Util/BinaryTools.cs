@@ -2,6 +2,9 @@
 
 namespace MidiLibrary.Util
 {
+    /// <summary>
+    /// Static class to provide various utility methods for interacting with binary
+    /// </summary>
     public static class BinaryTools
     {
         /// <summary>
@@ -77,7 +80,7 @@ namespace MidiLibrary.Util
             {
                 if ((i + 7) > binary.Length - 1)
                 {
-                    allNumbers[counter] = PadBinary(binary[i..binary.Length]);
+                    allNumbers[counter] = PadBinary(binary[i..binary.Length], 7);
                 }
                 else
                 {
@@ -92,9 +95,15 @@ namespace MidiLibrary.Util
             return allNumbers;
         }
 
-        private static bool[] PadBinary(bool[] binary)
+        /// <summary>
+        /// Converts the input array to an array of len length
+        /// </summary>
+        /// <param name="binary">The binary to convert</param>
+        /// <param name="len">The length of the new array</param>
+        /// <returns>New array with right padding</returns>
+        private static bool[] PadBinary(bool[] binary, int len)
         {
-            bool[] newBinary = new bool[7];
+            bool[] newBinary = new bool[len];
 
             binary.CopyTo(newBinary, 0);
 
