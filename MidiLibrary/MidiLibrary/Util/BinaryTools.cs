@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MidiLibrary.Structures;
 
 namespace MidiLibrary.Util
 {
@@ -42,6 +39,11 @@ namespace MidiLibrary.Util
             return binary;
         }
         
+        /// <summary>
+        /// Converts a binary input to a long
+        /// </summary>
+        /// <param name="binary">The binary array to convert</param>
+        /// <returns>The long representation of the array</returns>
         public static long BinaryToLong(bool[] binary)
         {
             long total = 0;
@@ -64,48 +66,39 @@ namespace MidiLibrary.Util
         /// Converts a given binary input to seven bit numbers
         /// </summary>
         /// <param name="binary">The binary to convert</param>
-        /// <returns></returns>
+        /// <returns>An array of seven bit numbers</returns>
         public static bool[][] BinaryToSevenBitNumbers(bool[] binary)
         {
             long requiredBytes = CalculateNumberOfSevenBitGroups(binary.Length);
             bool[][] allNumbers = new bool[requiredBytes][];
-            long total = 0;
-            
-            for (int i = 0; i < requiredBytes; i++)
+            int counter = 0;
+
+            for (int i = 0; i < requiredBytes * 7; i += 7)
             {
-                // Get the current 7 bits
-                allNumbers[i] = binary[i..(i + 7)];
-                total += BinaryToLong(allNumbers[i]);
+                if ((i + 7) > binary.Length - 1)
+                {
+                    allNumbers[counter] = PadBinary(binary[i..binary.Length]);
+                }
+                else
+                {
+                    allNumbers[counter] = binary[i..(i + 7)];
+                }
+
+                counter++;
             }
-            
+
+            Array.Reverse(allNumbers, 0, allNumbers.Length);
+
             return allNumbers;
+        }
 
-            /*List<bool> currentSevenBits = new List<bool>();
-            List<List<bool>> sevenBitNumbers = new List<List<bool>>();
+        private static bool[] PadBinary(bool[] binary)
+        {
+            bool[] newBinary = new bool[7];
 
-            for (int i = 0; i < binary.Length; i++)
-            {
-                currentSevenBits.Add(binary[i]);
+            binary.CopyTo(newBinary, 0);
 
-                // Every 7th bit (0 index)
-                if (i % 6 == 0 && i != 0)
-                {
-                    sevenBitNumbers.Add(currentSevenBits);
-                    currentSevenBits.Clear();
-                }
-            }
-            
-            sevenBitNumbers.Add(currentSevenBits);
-
-            foreach (List<bool> arr in sevenBitNumbers.Where(arr => arr.Count != 7))
-            {
-                for (int i = 0; i < (arr.Count - 7); i++)
-                {
-                    arr.Add(false);
-                }
-            }
-            
-            return sevenBitNumbers;*/
+            return newBinary;
         }
 
         /// <summary>
