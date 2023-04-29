@@ -1,1 +1,8 @@
+# ide
+/MidiLibrary/.vs
+/MidiLibrary/.idea
+/MidiLibrary/MidiLibrary.sln
 
+# build
+/MidiLibrary/MidiLibrary/bin
+/MidiLibrary/MidiLibrary/obj
