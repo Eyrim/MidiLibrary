@@ -1,0 +1,88 @@
+<Project>
+  <Name>Untitled</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.ClassDiagram" assembly="NClass.DiagramEditor, Version=2.8.0.2, Culture=neutral, PublicKeyToken=null">
+    <Name>MidiLibrary</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Package">
+        <Name>MidiLibrary</Name>
+        <Location left="40" top="34" />
+        <Size width="1423" height="855" />
+      </Entity>
+      <Entity type="Class">
+        <Name>Program</Name>
+        <Access>Public</Access>
+        <Location left="83" top="134" />
+        <Size width="163" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void Main(string[] args)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Package">
+        <Name>Structures</Name>
+        <Location left="62" top="285" />
+        <Size width="661" height="584" />
+      </Entity>
+      <Entity type="Structure">
+        <Name>SevenBitNumber</Name>
+        <Access>Public</Access>
+        <Location left="87" top="354" />
+        <Size width="265" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private readonly byte Number</Member>
+        <Member type="Constructor">public SevenBitNumber(byte number)</Member>
+        <Member type="Method">public static explicit operator SevenBitNumber(byte number)</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Member type="Method">private static bool ValidateByte(byte toValidate)</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>VariableLengthQuantity</Name>
+        <Access>Public</Access>
+        <Location left="396" top="354" />
+        <Size width="297" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private readonly bool[][] Number</Member>
+        <Member type="Constructor">public VariableLengthQuantity(long number)</Member>
+        <Member type="Method">public static explicit operator VariableLengthQuantity(long number)</Member>
+        <Member type="Method">public static explicit operator long(VariableLengthQuantity vlq)</Member>
+        <Member type="Method">private static bool[][] FromLong(long number)</Member>
+        <Member type="Method">private static long ToLong(VariableLengthQuantity vlq)</Member>
+      </Entity>
+      <Entity type="Package">
+        <Name>Util</Name>
+        <Location left="737" top="285" />
+        <Size width="718" height="584" />
+      </Entity>
+      <Entity type="Class">
+        <Name>BinaryTools</Name>
+        <Access>Public</Access>
+        <Location left="758" top="354" />
+        <Size width="333" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static bool[] LongToBinary(long number)</Member>
+        <Member type="Method">public static long BinaryToLong(bool[] binary)</Member>
+        <Member type="Method">public static bool[][] BinaryToSevenBitNumbers(bool[] binary)</Member>
+        <Member type="Method">public static bool[] PadBinary(bool[] binary, int len)</Member>
+        <Member type="Method">private static long CalculateMinimumBytes(long number)</Member>
+        <Member type="Method">private static long CalculateNumberOfSevenBitGroups(long numberOfBits)</Member>
+        <Modifier>Static</Modifier>
+      </Entity>
+    </Entities>
+    <Containers>
+      <Container entityIndex="0">
+        <ChildEntity>1</ChildEntity>
+        <ChildEntity>2</ChildEntity>
+        <ChildEntity>5</ChildEntity>
+      </Container>
+      <Container entityIndex="2">
+        <ChildEntity>-1</ChildEntity>
+        <ChildEntity>3</ChildEntity>
+        <ChildEntity>4</ChildEntity>
+      </Container>
+      <Container entityIndex="5">
+        <ChildEntity>6</ChildEntity>
+      </Container>
+    </Containers>
+    <Relationships />
+  </ProjectItem>
+</Project>
